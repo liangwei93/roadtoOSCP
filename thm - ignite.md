@@ -47,3 +47,8 @@ kali@kali:~/oscptraining/tryhackme/Ignite$ searchsploit 47138 -p
       URL: https://www.exploit-db.com/exploits/47138
      Path: /usr/share/exploitdb/exploits/linux/webapps/47138.py
 File Type: HTML document, ASCII text, with CRLF line terminators
+
+
+was stuck on installing request module in python2 and glad i found an answer here 
+https://stackoverflow.com/questions/64376726/unable-to-install-requests-module-in-python2-7-kali-linux-as-it-keeps-appearin?noredirect=1#comment113836497_64376726
+
