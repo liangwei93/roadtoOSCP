@@ -21,7 +21,7 @@ Service Info: OS: Linux; CPE: cpe:/o:linux:linux_kernel
 Service detection performed. Please report any incorrect results at https://nmap.org/submit/ .
 Nmap done: 1 IP address (1 host up) scanned in 51.99 seconds
 
-
+doing a gobuster scan doenst reveal anything interesting
 
 kali@kali:~/oscptraining/tryhackme/tomghost$ python3 ajpShooter.py http://10.10.86.50:8080 8009 /WEB-INF/web.xml read
 
