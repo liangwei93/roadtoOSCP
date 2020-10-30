@@ -69,7 +69,7 @@ kali@kali:~/oscptraining/tryhackme/Skynet$ smbmap -H 10.10.85.80
 
 There's a share called "anonymous" that has read access. Lets try connecting to investigate.
 
-kali@kali:~/oscptraining/tryhackme/Skynet$ smbclient //10.10.85.80/anonymous -u anonymous 
+kali@kali:~/oscptraining/tryhackme/Skynet$ smbclient //10.10.85.80/anonymous -u anonymous  
 Try "help" to get a list of possible commands.
 smb: \> ls
   .                                   D        0  Wed Sep 18 00:41:20 2019
