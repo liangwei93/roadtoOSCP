@@ -8,4 +8,11 @@ gobuster dir -e -u 10.10.243.102 -x php,txt,cgi,css,py,html -w /usr/share/dirb/w
 Hydra Brute force
 kali@kali:~/oscptraining/tryhackme/brooklyn99$ hydra 10.10.216.12 ssh -l jake -P /usr/share/wordlists/rockyou.txt
 
+SMB Enum (port 445, 139)
+nmap -p 445 --script=smb-enum-shares.nse,smb-enum-users.nse 10.10.117.251
+smbclient ///10.10.117.251/Users
+
+
+
+
 
