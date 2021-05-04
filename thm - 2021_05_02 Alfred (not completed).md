@@ -162,4 +162,7 @@ PS C:\Program Files (x86)\Jenkins\users> ./incognito.exe add_localgroup_user Adm
 PS C:\Program Files (x86)\Jenkins\users> 
 
 
+Abusing Token Privileges For LPE
+https://www.exploit-db.com/papers/42556
+
 
