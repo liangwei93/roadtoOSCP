@@ -41,6 +41,8 @@ SMB Enum (port 445, 139)
 nmap -p 445 --script=smb-enum-shares.nse,smb-enum-users.nse 10.10.117.251
 smbclient ///10.10.117.251/Users
 
+smbclient //10.10.223.79/anonymous -u anonymous 
+
 Our vulnerable machine in this example has a directory called backups containing an SSH key that we can use for authentication. This was found via: find / -name id_rsa 2> /dev/null....Let's break this down:
 
 We're using find to search the volume, by specifying the root (/) to search for files named "id_rsa" which is the name for private SSH keys, and then using 2> /dev/null to only show matches to us.
