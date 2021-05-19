@@ -4,6 +4,10 @@ nmap -sV -sC -o nmap 10.10.85.80
 https://blog.g0tmi1k.com/2011/08/basic-linux-privilege-escalation/
 
 
+nmap vulscan
+└─$ └─$ sudo nmap -sV --script vuln 10.10.100.195
+
+
 
 
 Gobuster 

