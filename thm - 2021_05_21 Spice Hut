@@ -1,3 +1,64 @@
 thm - 2021_05_21 Spice Hut
 
 
+
+
+[+] Users with console
+root:x:0:0:root:/root:/bin/bash                                                                   
+vagrant:x:1000:1000:,,,:/home/vagrant:/bin/bash
+
+[+] All users & groups
+uid=0(root) gid=0(root) groups=0(root)                                                            
+uid=1(daemon[0m) gid=1(daemon[0m) groups=1(daemon[0m)
+uid=10(uucp) gid=10(uucp) groups=10(uucp)
+uid=100(systemd-timesync) gid=102(systemd-timesync) groups=102(systemd-timesync)
+uid=1000(vagrant) gid=1000(vagrant) groups=1000(vagrant)
+uid=1002(lennie) gid=1002(lennie) groups=1002(lennie)
+
+
+[+] Interesting writable files owned by me or writable by everyone (not in Home) (max 500)
+[i] https://book.hacktricks.xyz/linux-unix/privilege-escalation#writable-files                    
+/dev/mqueue                                                                                       
+/dev/shm
+/incidents
+/incidents/suspicious.pcapng
+/recipe.txt
+/run/cloud-init/tmp
+/run/lock
+/run/lock/apache2
+/run/screen/S-www-data
+/tmp
+/tmp/.ICE-unix
+/tmp/.Test-unix
+/tmp/.X11-unix
+/tmp/.XIM-unix
+/tmp/.font-unix
+#)You_can_write_even_more_files_inside_last_directory
+
+
+
+
+Root Cron Job runs planner.sh
+Modifies startup_list.txt
+Runs /etc/print.sh
+
+
+lennie@startup:~/scripts$ ls
+planner.sh  startup_list.txt
+lennie@startup:~/scripts$ cat planner.sh
+#!/bin/bash
+echo $LIST > /home/lennie/scripts/startup_list.txt
+/etc/print.sh
+lennie@startup:~/scripts$ ls -l
+total 8
+-rwxr-xr-x 1 root root 77 Nov 12  2020 planner.sh
+-rw-r--r-- 1 root root  1 May 21 17:28 startup_list.txt
+lennie@startup:~/scripts$ cat /etc/print.sh
+#!/bin/bash
+echo "Done!"
+
+
+
+just edit print.sh such that it print the root.txt result over to tmp directory and we are Done
+
+completed 22may 0140
