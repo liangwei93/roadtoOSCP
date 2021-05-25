@@ -41,11 +41,36 @@ hydra -t 16 -l administrator -P /usr/share/wordlists/rockyou.txt -vV 10.10.30.60
 
 
 
-SMB Enum (port 445, 139)
+### SMB Enum (port 445, 139)
+''' 
 nmap -p 445 --script=smb-enum-shares.nse,smb-enum-users.nse 10.10.117.251
 smbclient ///10.10.117.251/Users
 
 smbclient //10.10.223.79/anonymous -u anonymous 
+
+for no password login 
+smbclient -L \\\\10.10.178.186\\ -N 
+
+for copying file from local to victim
+put xxx.txt
+
+for downloading from victim to local
+get xxx.txt
+
+'''
+
+
+### RPC Enum (port 111)
+'''
+sudo showmount -e 10.10.178 186 
+Export list for 10.10.178.186:
+/opt/conf *
+
+Now we need to mount /opt/conf in our local directory, and for that we need to create a mount point (directory) with the name mount0.
+
+
+
+'''
 
 Our vulnerable machine in this example has a directory called backups containing an SSH key that we can use for authentication. This was found via: find / -name id_rsa 2> /dev/null....Let's break this down:
 
