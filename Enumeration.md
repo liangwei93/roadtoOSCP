@@ -43,19 +43,19 @@ hydra -t 16 -l administrator -P /usr/share/wordlists/rockyou.txt -vV 10.10.30.60
 
 ### SMB Enum (port 445, 139)
 ''' 
-nmap -p 445 --script=smb-enum-shares.nse,smb-enum-users.nse 10.10.117.251
-smbclient ///10.10.117.251/Users
+        nmap -p 445 --script=smb-enum-shares.nse,smb-enum-users.nse 10.10.117.251
+        smbclient ///10.10.117.251/Users
 
-smbclient //10.10.223.79/anonymous -u anonymous 
+        smbclient //10.10.223.79/anonymous -u anonymous 
 
-for no password login 
-smbclient -L \\\\10.10.178.186\\ -N 
+        for no password login 
+        smbclient -L \\\\10.10.178.186\\ -N 
 
-for copying file from local to victim
-put xxx.txt
+        for copying file from local to victim
+        put xxx.txt
 
-for downloading from victim to local
-get xxx.txt
+        for downloading from victim to local
+         xxx.txt
 
 '''
 
