@@ -1,5 +1,6 @@
 For spawning a shell
 python -c 'import pty;pty.spawn("/bin/bash")';
+python3 -c 'import pty;pty.spawn("/bin/bash")';
 
 
 download from attacking to target for windows
