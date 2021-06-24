@@ -5,9 +5,9 @@ https://blog.g0tmi1k.com/2011/08/basic-linux-privilege-escalation/
 
 
 nmap vulscan
-└─$ └─$ sudo nmap -sV --script vuln 10.10.100.195
+└─$ └─$ sudo nmap -sV --script vuln 10.10.10.75
 
-gobuster dir -e -u 10.10.10.60:443 -x php,txt,cgi,css,py,html -w /usr/share/dirbuster/wordlists/directory-list-lowercase-2.3-medium.txt -s "204,301,307,401,403" -k -t 64 --timeout 20s
+gobuster dir -e -u 10.10.10.9 -x php,txt,cgi,css,py,html -w /usr/share/dirbuster/wordlists/directory-list-lowercase-2.3-medium.txt -s "204,301,307,401,403" -k -t 64 --timeout 20s
 
 
 
