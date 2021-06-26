@@ -59,7 +59,7 @@ MSBulletin : MS16-032
 CVEID      : 2016-0099
 Link       : https://www.exploit-db.com/exploits/39719/
 VulnStatus : Appears Vulnerable
-
+wg
 Title      : Windows Kernel-Mode Drivers EoP
 MSBulletin : MS16-034
 CVEID      : 2016-0093/94/95/96
