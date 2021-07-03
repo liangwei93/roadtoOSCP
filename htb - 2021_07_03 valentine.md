@@ -57,3 +57,6 @@ python 32764.py 10.10.10.79 | grep -v "00 00 00 00 00 00 00 00 00 00 00 00 00 00
 
 
 1007  0.0  0.1  26416  1672 ?        Ss   02:46   0:25 /usr/bin/tmux -S /.devs/dev_sess
+
+
+root after /.devs/dev_sess
