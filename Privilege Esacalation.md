@@ -32,3 +32,12 @@ for mongodb
 
 
 find / -perm +6000 2>/dev/null | grep '/bin/'
+
+
+
+
+#### Windows Privilege Escalation #####
+
+https://infosecwriteups.com/privilege-escalation-in-windows-380bee3a2842
+
+https://github.com/swisskyrepo/PayloadsAllTheThings/blob/master/Methodology%20and%20Resources/Windows%20-%20Privilege%20Escalation.md#user-enumeration
